@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import RedditApp from './components/view/home.container';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware, compose } from 'redux';
+import { redditReducer } from './components/state/redditReducer';
 import thunk from 'redux-thunk';
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
