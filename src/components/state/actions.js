@@ -9,12 +9,17 @@ export const getToken = () => {
     axios({
       method: 'POST',
       url: 'https://www.reddit.com/api/v1/access_token',
+      withCredentials: true,
       auth: {
         username: 'zdGd63TEvMYz0A',
         password: 'jZmBcKs3giJ8bU_dDQ9YJM2dZyGsFg'
       },
       headers: {
-        'content-type': 'application/x-www-form-urlencoded'
+        'content-type': 'application/x-www-form-urlencoded',
+        'Access-Control-Allow-Origin': '*'
+      },
+      data: {
+        grant_type: 'client_credentials'
       }
     })
     .then(res => dispatch({ type: GET_TOKEN, payload: res.data }))

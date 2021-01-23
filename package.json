@@ -4,7 +4,9 @@
   "description": "Simple Reddit Client",
   "main": "index.js",
   "scripts": {
-    "server": "./node_modules/.bin/webpack serve --open"
+    "devserver": "./node_modules/.bin/webpack serve --open",
+    "build": "./node_modules/.bin/webpack --mode development",
+    "start": "./node_modules/.bin/nodemon --exec babel-node ./backend/server.js"
   },
   "repository": {
     "type": "git",
@@ -18,6 +20,7 @@
   "homepage": "https://github.com/gerzok/reddit-client#readme",
   "dependencies": {
     "axios": "^0.21.1",
+    "express": "^4.17.1",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-redux": "^7.2.2",
@@ -26,10 +29,12 @@
   },
   "devDependencies": {
     "@babel/core": "^7.12.10",
+    "@babel/node": "^7.12.10",
     "@babel/preset-env": "^7.12.11",
     "@babel/preset-react": "^7.12.10",
     "babel-loader": "^8.2.2",
     "babel-plugin-transform-class-properties": "^6.24.1",
+    "nodemon": "^2.0.7",
     "webpack": "^5.17.0",
     "webpack-cli": "^4.4.0",
     "webpack-dev-server": "^3.11.2"
