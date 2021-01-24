@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import RedditAppComp from './home.component';
-import { getToken } from '../state/actions';
+import { getToken, getTopList } from '../state/actions';
 
 const mapStateToProps = (state) => ({
   topList: state.topList,
@@ -8,7 +8,8 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  getToken: () => dispatch(getToken())
+  getToken: () => dispatch(getToken()),
+  getTopList: () => dispatch(getTopList())
 });
 
 const RedditApp = connect(mapStateToProps, mapDispatchToProps)(RedditAppComp);

@@ -12,6 +12,11 @@ export const redditReducer = (state = initialState, action) => {
         ...state,
         token: action.payload
       }
+    case GET_TOPLIST:
+      return {
+        ...state,
+        topList: action.payload
+      }
 
     default:
       return state;
