@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Suspense } from 'react';
 
 class HomeComp extends Component {
   componentDidMount() {
@@ -7,10 +7,15 @@ class HomeComp extends Component {
   }
 
   render() {
+    const { topList } = this.props;
     return(
-      <div>
-        <h1>Reddit Client</h1>
-      </div>
+      <Suspense>
+        {topList && (
+          <div>
+            <h1>Reddit Client</h1>
+          </div>
+        )}
+      </Suspense>
     );
   };
 }
