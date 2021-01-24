@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 class RedditAppComp extends Component {
   componentDidMount() {
-    this.props.getToken();
+    // this.props.getToken();
   }
   render() {
     return(
