@@ -1,11 +1,14 @@
 const express = require('express');
 const cors = require('cors');
+const bodyParser = require('body-parser');
 const requestAPI = require('./helpers'); 
 
 const app = express();
 
 app.use(cors());
 app.use(express.static('public'));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
 app.post('/getToken', async (req, res) => {
   try {
@@ -16,10 +19,9 @@ app.post('/getToken', async (req, res) => {
   }
 });
 
-app.get('/getTopList', async (req, res) => {
-  console.log(req.body);
+app.post('/getTopList', async (req, res) => {
   try {
-    const topList = await requestAPI.getToken(token);
+    const topList = await requestAPI.getTopList(req.body.token);
     res.json(topList);
   } catch(err) {
     return res.status(401).json({ error: err.message });

@@ -2,6 +2,7 @@ require('dotenv').config();
 const axios = require('axios');
 const jsbase64 = require('js-base64');
 
+// GET TOKEN
 const getToken = () =>
   axios({
     method: 'POST',
@@ -12,20 +13,21 @@ const getToken = () =>
       password: jsbase64.decode(process.env.REDDIT_APP_SECRET)
     },
     headers: {
-      'content-type': 'application/x-www-form-urlencoded'
+      'Content-Type': 'application/x-www-form-urlencoded'
     },
     params: {
-      grant_type: 'client_credentials'
+      'grant_type': 'client_credentials'
     }
   })
   .then(res => res.data);
 
+// GET TOPLIST
 const getTopList = token =>
-axios({
+  axios({
     method: 'GET',
     url: 'https://oauth.reddit.com/r/all/top',
     headers: {
-      Authorization: 'basic '+ token
+      'Authorization': `Bearer ${token}`
     },
   })
   .then(res => res.data);

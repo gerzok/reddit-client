@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 
-class RedditAppComp extends Component {
+class HomeComp extends Component {
   componentDidMount() {
-    this.props.getToken();
+    const { getTopList, token: { access_token } } = this.props;
+    getTopList(access_token);
   }
 
   render() {
@@ -14,4 +15,4 @@ class RedditAppComp extends Component {
   };
 }
 
-export default RedditAppComp;
+export default HomeComp;
