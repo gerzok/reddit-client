@@ -1,5 +1,8 @@
 import React, { Component, Fragment } from 'react';
-import Spinner from 'react-bootstrap/Spinner'
+import { Spinner, Container, Row, Col } from 'react-bootstrap';
+
+import './scss/home.scss';
+import Logo from '../../../public/images/reddit-logo.png';
 
 class HomeComp extends Component {
   componentDidMount() {
@@ -19,8 +22,24 @@ class HomeComp extends Component {
               <Spinner animation="border" variant="secondary" /> <span>Loading...</span>
             </Fragment>
           ) : (
-            <div>
-              <h1>Reddit Client</h1>
+            <div className="wp-container">
+              <Container className="header" fluid>
+                <Row>
+                  <Col className="logo">
+                    <img src={Logo} className="img-fluid" alt="Reddit Logo" />
+                  </Col>
+                </Row>
+              </Container>
+              
+              <div className="main-container">
+                <Container className="main">
+                  <Row>
+                    <Col>
+                      <p>Body here...</p>
+                    </Col>
+                  </Row>
+                </Container>
+              </div>
             </div>
           )}
         </Fragment>

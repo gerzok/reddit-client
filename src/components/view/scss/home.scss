@@ -1,0 +1,16 @@
+.wp-container {
+  height: 100vh;
+
+  .header {
+    background-color: #FFF;
+
+    .logo {
+      padding: 10px 20px;
+    }
+  }
+  
+  .main-container {
+    background-color: #DAE0E6;
+    height: 100%;
+  }
+}
