@@ -1,7 +1,8 @@
-import React, { Component, Suspense } from 'react';
+import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import Home from './home.container';
 import { getToken } from '../state/actions';
+import Spinner from 'react-bootstrap/Spinner';
 
 class RedditAppComp extends Component {
   componentDidMount() {
@@ -12,9 +13,15 @@ class RedditAppComp extends Component {
   render() {
     const { token } = this.props;
     return(
-      <Suspense fallback={<h4>Loading app...</h4>}>
-        {token && <Home />}
-      </Suspense>
+      <Fragment>
+        {!token ? (
+          <Fragment>
+            <Spinner animation="border" variant="secondary" /> <span>Loading...</span>
+          </Fragment>
+        ) : (
+          <Home />
+        )}
+      </Fragment>
     );
   }
 }

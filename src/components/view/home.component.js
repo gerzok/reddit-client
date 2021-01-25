@@ -1,4 +1,5 @@
-import React, { Component, Suspense } from 'react';
+import React, { Component, Fragment } from 'react';
+import Spinner from 'react-bootstrap/Spinner'
 
 class HomeComp extends Component {
   componentDidMount() {
@@ -8,14 +9,21 @@ class HomeComp extends Component {
 
   render() {
     const { topList } = this.props;
+    const { data = { children: null } } = topList;
+    const { children } = data;
+
     return(
-      <Suspense>
-        {topList && (
-          <div>
-            <h1>Reddit Client</h1>
-          </div>
-        )}
-      </Suspense>
+        <Fragment>
+          {!children ? (
+            <Fragment>
+              <Spinner animation="border" variant="secondary" /> <span>Loading...</span>
+            </Fragment>
+          ) : (
+            <div>
+              <h1>Reddit Client</h1>
+            </div>
+          )}
+        </Fragment>
     );
   };
 }
