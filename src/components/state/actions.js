@@ -6,6 +6,7 @@ export const GET_TOPLIST = 'GET_TOPLIST';
 export const GET_MORE_TOPLIST = 'GET_MORE_TOPLIST';
 export const NEXT_PAGE_PAGINATION = 'NEXT_PAGE_PAGINATION';
 export const INITIAL_TOP_LIST = 'INITIAL_TOP_LIST';
+export const REMOVE_ALL_POST = 'REMOVE_ALL_POST';
 
 // ACTIONS CREATORS
 export const getToken = () => {
@@ -34,4 +35,8 @@ export const nextPage = page => {
 
 export const initialTopList = () => {
   return dispatch => dispatch({ type: INITIAL_TOP_LIST });
+}
+
+export const removeAllPost = () => {
+  return dispatch => dispatch({ type: REMOVE_ALL_POST });
 }

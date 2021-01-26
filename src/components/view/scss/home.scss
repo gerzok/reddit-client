@@ -7,6 +7,12 @@
     .logo {
       padding: 10px 20px;
     }
+
+    .btn-actions {
+      align-self: center;
+      text-align: right;
+      padding-right: 20px;
+    }
   }
   
   .main-container {
@@ -42,9 +48,18 @@
           }
   
           .post-details {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
             .author-date {
               color: #787C7E;
               font-size: 0.7em;
+            }
+
+            .dismiss-post {
+              font-size: 0.8em;
+              cursor: pointer;
             }
           }
         }
@@ -71,6 +86,10 @@
           }
         }
       }
+    }
+
+    h6 {
+      padding-top: 25px;
     }
 
     .pagination-container {

@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react';
-import { Spinner, Container, Row, Col, Card, Pagination, Toast } from 'react-bootstrap';
+import { Spinner, Container, Row, Col, Card, Pagination, Toast, Button } from 'react-bootstrap';
 
 import './scss/home.scss';
 import Logo from '../../../public/images/reddit-logo.png';
@@ -54,6 +54,11 @@ class HomeComp extends Component {
     }));
   }
 
+  handleRemoveAllPost() {
+    const { removeAllPost } = this.props;
+    removeAllPost();
+  }
+
   render() {
     const { topList, pagination } = this.props;
     const { data = { children: null } } = topList;
@@ -73,6 +78,9 @@ class HomeComp extends Component {
                   <Col className="logo">
                     <img src={Logo} className="img-fluid" alt="Reddit Logo" />
                   </Col>
+                  <Col className="btn-actions">
+                    <Button variant="danger" size="sm" onClick={this.handleRemoveAllPost.bind(this)}>Remove All Posts</Button>
+                  </Col>
                 </Row>
               </Container>
               
@@ -80,7 +88,7 @@ class HomeComp extends Component {
                 <Container className="main">
                   <Row>
                     <Col>
-                      {children.map((el, index) => {
+                      {children.length > 0 && children.map((el, index) => {
                         const { 
                           title,
                           url,
@@ -103,6 +111,7 @@ class HomeComp extends Component {
                               <Card.Header>
                                 <div className="post-details">
                                   <div className="author-date">{`Posted by ${author} ${hoursAgo} hours ago`}</div>
+                                  <div className="dismiss-post">&#10006;</div>
                                 </div>
                                 <h4>{title}</h4>
                               </Card.Header>
@@ -120,13 +129,14 @@ class HomeComp extends Component {
                           </Card>
                         );
                       })}
+                      {!children.length && <h6>All posts have been removed...</h6>}
                     </Col>
                   </Row>
 
                   <Row>
                     <Col className="pagination-container">
                     <Pagination>
-                      {pagination.length > 0 && pagination.map((item, index) => {
+                      {children.length > 0 && pagination.length > 0 && pagination.map((item, index) => {
                         const { currentPage } = this.state;
 
                         if(index===0) {
@@ -148,7 +158,7 @@ class HomeComp extends Component {
                           );
                         }
                       })}
-                      <Pagination.Last onClick={this.toggleToast.bind(this)} />
+                      {children.length > 0 && <Pagination.Last onClick={this.toggleToast.bind(this)} />}
                     </Pagination>
                     </Col>
                   </Row>

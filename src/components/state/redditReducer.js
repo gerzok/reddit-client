@@ -3,12 +3,13 @@ import {
   GET_TOPLIST,
   GET_MORE_TOPLIST,
   NEXT_PAGE_PAGINATION,
-  INITIAL_TOP_LIST
+  INITIAL_TOP_LIST,
+  REMOVE_ALL_POST
 } from './actions';
 
 // INITIAL STATE
 const initialState = {
-  topList: [],
+  topList: {},
   token: null,
   pagination: [],
   totalPagination: 1
@@ -58,6 +59,17 @@ export const redditReducer = (state = initialState, action) => {
         ...state,
         topList: {
           ...state.initialList
+        }
+      }
+    case REMOVE_ALL_POST:
+      return {
+        ...state,
+        topList: {
+          ...state.topListSelector,
+          data: {
+            ...state.topList.data,
+            children: []
+          }
         }
       }
 
