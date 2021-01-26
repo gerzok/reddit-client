@@ -29,7 +29,7 @@ export const getTopList = token => {
 
 export const getPagination = (token, pagination) => {
   return dispatch =>
-    axios.post(`${urlEnv}`, { token, pagination }, 
+    axios.post(`${urlEnv}/getPagination`, { token, pagination }, 
     { headers: { 'Content-Type': 'application/json' } })
       .then(res => dispatch({ type: GET_MORE_TOPLIST, payload: res.data }));
 }
