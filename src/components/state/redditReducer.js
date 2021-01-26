@@ -5,7 +5,8 @@ import {
   NEXT_PAGE_PAGINATION,
   INITIAL_TOP_LIST,
   REMOVE_ALL_POSTS,
-  REMOVE_THIS_POST
+  REMOVE_THIS_POST,
+  ITEM_READ
 } from './actions';
 
 // INITIAL STATE
@@ -81,6 +82,20 @@ export const redditReducer = (state = initialState, action) => {
           data: {
             ...state.topList.data,
             children: state.topList.data.children.filter((item, index) => index !== action.payload)
+          }
+        }
+      }
+    case ITEM_READ:
+      console.log('action.payload', action.payload)
+      return {
+        ...state,
+        topList: {
+          ...state.topList.payload,
+          data: {
+            ...state.topList.data,
+            children: state.topList.data.children.map((item, index) =>
+              index === action.payload ? { ...item, readStatus: 'read' } : { ...item }
+            )
           }
         }
       }

@@ -43,6 +43,7 @@
       }
 
       .card-content {
+        cursor: pointer;
         flex-basis: calc(100% - 40px);
 
         .card-header {
@@ -85,6 +86,12 @@
               color: #787C7E;
               font-size: 0.9em;
               font-weight: 700;
+
+              .post-read {
+                background-color: #EDEFF1;
+                border-radius: 20px;
+                padding: 2px 8px;
+              }
             }
           }
         }

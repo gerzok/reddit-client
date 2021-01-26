@@ -8,6 +8,7 @@ export const NEXT_PAGE_PAGINATION = 'NEXT_PAGE_PAGINATION';
 export const INITIAL_TOP_LIST = 'INITIAL_TOP_LIST';
 export const REMOVE_ALL_POSTS = 'REMOVE_ALL_POSTS';
 export const REMOVE_THIS_POST = 'REMOVE_THIS_POST';
+export const ITEM_READ = 'ITEM_READ';
 
 // ACTIONS CREATORS
 export const getToken = () => {
@@ -44,4 +45,8 @@ export const removeAllPosts = () => {
 
 export const removeThisPost = id => {
   return dispatch => dispatch({ type: REMOVE_THIS_POST, payload: id });
+}
+
+export const itemRead = id => {
+  return dispatch => dispatch({ type: ITEM_READ, payload: id });
 }

@@ -73,6 +73,11 @@ class HomeComp extends Component {
     }, 1000);
   }
 
+  handleItemSelected(e, id) {
+    const { itemRead } = this.props;
+    itemRead(id);
+  }
+
   render() {
     const { topList, pagination } = this.props;
     const { data = { children: null } } = topList;
@@ -123,7 +128,7 @@ class HomeComp extends Component {
                             <div className="left-side-bar">
                               <div className="dismiss-post" onClick={e => this.handleRemoveThisPost(e, index)}>&#10006;</div>
                             </div>
-                            <div className="card-content">
+                            <div className="card-content" onClick={e => this.handleItemSelected(e, index)}>
                               <Card.Header>
                                 <div className="post-details">
                                   <div className="author-date">{`Posted by ${author} ${hoursAgo} hours ago`}</div>
@@ -136,7 +141,7 @@ class HomeComp extends Component {
                               <Card.Footer>
                                 <div className="post-footer">
                                   <div className="comments-status">
-                                    &#9998; {`${comments} Comments | ${readStatus}`}
+                                    &#9998; {`${comments} Comments |`} <span className={readStatus==='read' ? 'post-read' : ''}>{readStatus}</span>
                                   </div>
                                 </div>
                               </Card.Footer>

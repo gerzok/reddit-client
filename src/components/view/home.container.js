@@ -1,6 +1,14 @@
 import { connect } from 'react-redux';
 import HomeComp from './home.component';
-import { getTopList, getPagination, nextPage, initialTopList, removeAllPosts, removeThisPost } from '../state/actions';
+import {
+  getTopList,
+  getPagination,
+  nextPage,
+  initialTopList,
+  removeAllPosts,
+  removeThisPost,
+  itemRead
+} from '../state/actions';
 
 const mapStateToProps = (state) => ({
   topList: state.topList,
@@ -15,7 +23,8 @@ const mapDispatchToProps = (dispatch) => ({
   nextPage: page => dispatch(nextPage(page)),
   initialTopList: () => dispatch(initialTopList()),
   removeAllPosts: () => dispatch(removeAllPosts()),
-  removeThisPost: id => dispatch(removeThisPost(id))
+  removeThisPost: id => dispatch(removeThisPost(id)),
+  itemRead: id => dispatch(itemRead(id)),
 });
 
 const Home = connect(mapStateToProps, mapDispatchToProps)(HomeComp);
