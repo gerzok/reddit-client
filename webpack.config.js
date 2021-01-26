@@ -22,7 +22,11 @@ module.exports = {
     ],
   },
   resolve: {
-    extensions: ['*', '.js', '.jsx']
+    extensions: ['*', '.js', '.jsx'],
+    fallback: {
+      "fs": false,
+      "path": require.resolve("path-browserify")
+    }
   },
   output: {
     path: path.join(__dirname, 'public'),
