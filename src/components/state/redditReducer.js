@@ -86,7 +86,6 @@ export const redditReducer = (state = initialState, action) => {
         }
       }
     case ITEM_READ:
-      console.log('action.payload', action.payload)
       return {
         ...state,
         topList: {
