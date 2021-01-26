@@ -1,5 +1,5 @@
 .wp-container {
-  height: 100vh;
+  min-height: 100vh;
 
   .header {
     background-color: #FFF;
@@ -12,5 +12,14 @@
   .main-container {
     background-color: #DAE0E6;
     height: 100%;
+
+    .card {
+      margin-bottom: 15px;
+
+      .card-img-top {
+        max-width: 50%;
+        height: 100%;
+      }
+    }
   }
 }

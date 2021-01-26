@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react';
-import { Spinner, Container, Row, Col } from 'react-bootstrap';
+import { Spinner, Container, Row, Col, Card } from 'react-bootstrap';
 
 import './scss/home.scss';
 import Logo from '../../../public/images/reddit-logo.png';
@@ -35,7 +35,13 @@ class HomeComp extends Component {
                 <Container className="main">
                   <Row>
                     <Col>
-                      <p>Body here...</p>
+                      {children.map((el, index) => {
+                        return(
+                          <Card key={index}>
+                            <Card.Img variant="top" src={el.data.url} />
+                          </Card>
+                        );
+                      })}
                     </Col>
                   </Row>
                 </Container>
