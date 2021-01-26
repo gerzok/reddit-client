@@ -20,7 +20,13 @@ export const redditReducer = (state = initialState, action) => {
     case GET_TOPLIST:
       return {
         ...state,
-        topList: action.payload
+        topList: {
+          ...action.payload,
+          data: {
+            ...action.payload.data,
+            children: action.payload.data.children.map(item => { return { ...item, readStatus: 'unread' } })
+          }
+        }
       }
 
     default:

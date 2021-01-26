@@ -16,9 +16,44 @@
     .card {
       margin-bottom: 15px;
 
-      .card-img-top {
-        max-width: 50%;
-        height: 100%;
+      .card-header {
+        background-color: transparent;
+        border-bottom: 0;
+
+        h4 {
+          font-size: 1.2em;
+          font-weight: 500;
+          margin-bottom: 0;
+        }
+
+        .post-details {
+          .author-date {
+            color: #787C7E;
+            font-size: 0.7em;
+          }
+        }
+      }
+
+      .card-body {
+        .card-img-top {
+          max-width: 50%;
+          height: 100%;
+          margin: 0 auto;
+          display: block;
+        }
+      }
+
+      .card-footer {
+        background-color: transparent;
+        border-top: 0;
+
+        .post-footer {
+          .comments-status {
+            color: #787C7E;
+            font-size: 0.9em;
+            font-weight: 700;
+          }
+        }
       }
     }
   }

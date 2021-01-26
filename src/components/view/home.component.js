@@ -36,9 +36,39 @@ class HomeComp extends Component {
                   <Row>
                     <Col>
                       {children.map((el, index) => {
+                        const { 
+                          title,
+                          url,
+                          author,
+                          created_utc: created,
+                          thumbnail: defaultThumb,
+                          num_comments: comments,
+                        } = el.data;
+                        const { readStatus } = el;
+                        const currentDate = new Date();
+                        const createdOn = new Date(created * 1000);
+                        const difference = (currentDate - createdOn)/36e5;
+                        const hoursAgo = Math.round(difference);
+                        const thumbnail = url.match(/\.(jpg|png|gif)\b/) ? url : defaultThumb;
+
                         return(
                           <Card key={index}>
-                            <Card.Img variant="top" src={el.data.url} />
+                            <Card.Header>
+                              <div className="post-details">
+                                <div className="author-date">{`Posted by ${author} ${hoursAgo} hours ago`}</div>
+                              </div>
+                              <h4>{title}</h4>
+                            </Card.Header>
+                            <Card.Body>
+                              <Card.Img variant="top" src={thumbnail} />
+                            </Card.Body>
+                            <Card.Footer>
+                              <div className="post-footer">
+                                <div className="comments-status">
+                                  &#9998; {`${comments} Comments | ${readStatus}`}
+                                </div>
+                              </div>
+                            </Card.Footer>
                           </Card>
                         );
                       })}
