@@ -15,46 +15,74 @@
 
     .card {
       margin-bottom: 15px;
+      border: 1px solid #CCC;
+      display: flex;
+      flex-direction: row;
 
-      .card-header {
-        background-color: transparent;
-        border-bottom: 0;
+      &:first-of-type {
+        margin-top: 20px;
+      }
 
-        h4 {
-          font-size: 1.2em;
-          font-weight: 500;
-          margin-bottom: 0;
+      .left-side-bar {
+        flex-basis: 40px;
+        background-color: #F7F9FA;
+      }
+
+      .card-content {
+        flex-basis: calc(100% - 40px);
+
+        .card-header {
+          background-color: transparent;
+          border-bottom: 0;
+  
+          h4 {
+            font-size: 1.2em;
+            font-weight: 500;
+            margin-bottom: 0;
+          }
+  
+          .post-details {
+            .author-date {
+              color: #787C7E;
+              font-size: 0.7em;
+            }
+          }
         }
-
-        .post-details {
-          .author-date {
-            color: #787C7E;
-            font-size: 0.7em;
+  
+        .card-body {
+          .card-img-top {
+            max-width: 50%;
+            height: 100%;
+            margin: 0 auto;
+            display: block;
+          }
+        }
+  
+        .card-footer {
+          background-color: transparent;
+          border-top: 0;
+  
+          .post-footer {
+            .comments-status {
+              color: #787C7E;
+              font-size: 0.9em;
+              font-weight: 700;
+            }
           }
         }
       }
+    }
 
-      .card-body {
-        .card-img-top {
-          max-width: 50%;
-          height: 100%;
-          margin: 0 auto;
-          display: block;
-        }
+    .pagination-container {
+      .pagination {
+        justify-content: flex-end;
       }
+    }
 
-      .card-footer {
-        background-color: transparent;
-        border-top: 0;
-
-        .post-footer {
-          .comments-status {
-            color: #787C7E;
-            font-size: 0.9em;
-            font-weight: 700;
-          }
-        }
-      }
+    .toast {
+      position: fixed;
+      right: 20px;
+      bottom: 20px;
     }
   }
 }

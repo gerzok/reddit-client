@@ -32,6 +32,18 @@ const getTopList = token =>
   })
   .then(res => res.data);
 
+// GET PAGINATION
+const getPagination = (token, pagination) =>
+  axios({
+    method: 'GET',
+    url: `https://oauth.reddit.com/r/all/top?after=${pagination}`,
+    headers: {
+      'Authorization': `Bearer ${token}`
+    },
+  })
+  .then(res => res.data);
+
 
 exports.getToken = getToken;
 exports.getTopList = getTopList;
+exports.getPagination = getPagination;

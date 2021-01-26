@@ -3,6 +3,9 @@ import axios from 'axios';
 // ACTIONS
 export const GET_TOKEN = 'GET_TOKEN';
 export const GET_TOPLIST = 'GET_TOPLIST';
+export const GET_MORE_TOPLIST = 'GET_MORE_TOPLIST';
+export const NEXT_PAGE_PAGINATION = 'NEXT_PAGE_PAGINATION';
+export const INITIAL_TOP_LIST = 'INITIAL_TOP_LIST';
 
 // ACTIONS CREATORS
 export const getToken = () => {
@@ -16,4 +19,19 @@ export const getTopList = token => {
     axios.post('http://localhost:9000/getTopList', { token }, 
     { headers: { 'Content-Type': 'application/json' } })
       .then(res => dispatch({ type: GET_TOPLIST, payload: res.data }));
+}
+
+export const getPagination = (token, pagination) => {
+  return dispatch =>
+    axios.post('http://localhost:9000/getPagination', { token, pagination }, 
+    { headers: { 'Content-Type': 'application/json' } })
+      .then(res => dispatch({ type: GET_MORE_TOPLIST, payload: res.data }));
+}
+
+export const nextPage = page => {
+  return dispatch => dispatch({ type: NEXT_PAGE_PAGINATION, payload: page });
+}
+
+export const initialTopList = () => {
+  return dispatch => dispatch({ type: INITIAL_TOP_LIST });
 }

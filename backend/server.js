@@ -28,4 +28,13 @@ app.post('/getTopList', async (req, res) => {
   }
 });
 
+app.post('/getPagination', async (req, res) => {
+  try {
+    const pagination = await requestAPI.getPagination(req.body.token, req.body.pagination);
+    res.json(pagination);
+  } catch(err) {
+    return res.status(401).json({ error: err.message });
+  }
+});
+
 app.listen(9000, () => console.log('App running in http://localhost:9000'));
