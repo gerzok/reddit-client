@@ -7,9 +7,10 @@
     "develop": "npm-run-all -p devserve serve",
     "devserve": "./node_modules/.bin/webpack serve --open",
     "serve": "./node_modules/.bin/nodemon --exec babel-node ./backend/server.js",
+    "prodServe": "node ./backend/server.js",
     "build": "./node_modules/.bin/webpack --mode development",
     "prodBuild": "./node_modules/.bin/webpack --mode production",
-    "production": "npm-run-all build -p prodBuild serve",
+    "production": "npm-run-all build -p prodBuild prodServe",
     "openBrowser": "sleep 1 && ./node_modules/.bin/open-cli http://localhost:9000",
     "start": "npm-run-all build -p serve openBrowser"
   },
