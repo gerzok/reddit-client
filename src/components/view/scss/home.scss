@@ -32,6 +32,14 @@
       .left-side-bar {
         flex-basis: 40px;
         background-color: #F7F9FA;
+        display: flex;
+        justify-content: center;
+
+        .dismiss-post {
+          font-size: 0.8em;
+          cursor: pointer;
+          padding-top: 10px;
+        }
       }
 
       .card-content {
@@ -55,11 +63,6 @@
             .author-date {
               color: #787C7E;
               font-size: 0.7em;
-            }
-
-            .dismiss-post {
-              font-size: 0.8em;
-              cursor: pointer;
             }
           }
         }
@@ -85,6 +88,12 @@
             }
           }
         }
+      }
+
+      &.hide {
+        visibility: hidden;
+        opacity: 0;
+        transition: visibility 0s linear 1s, opacity 1s linear;
       }
     }
 

@@ -4,7 +4,8 @@ import {
   GET_MORE_TOPLIST,
   NEXT_PAGE_PAGINATION,
   INITIAL_TOP_LIST,
-  REMOVE_ALL_POST
+  REMOVE_ALL_POSTS,
+  REMOVE_THIS_POST
 } from './actions';
 
 // INITIAL STATE
@@ -61,7 +62,7 @@ export const redditReducer = (state = initialState, action) => {
           ...state.initialList
         }
       }
-    case REMOVE_ALL_POST:
+    case REMOVE_ALL_POSTS:
       return {
         ...state,
         topList: {
@@ -69,6 +70,17 @@ export const redditReducer = (state = initialState, action) => {
           data: {
             ...state.topList.data,
             children: []
+          }
+        }
+      }
+    case REMOVE_THIS_POST:
+      return {
+        ...state,
+        topList: {
+          ...state.topList.payload,
+          data: {
+            ...state.topList.data,
+            children: state.topList.data.children.filter((item, index) => index !== action.payload)
           }
         }
       }

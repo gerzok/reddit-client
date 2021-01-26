@@ -8,7 +8,8 @@ class HomeComp extends Component {
   state = {
     initialPagination: true,
     currentPage: 0,
-    isOpen: false
+    isOpen: false,
+    removePost: null
   }
   componentDidMount() {
     const { getTopList, token: { access_token } } = this.props;
@@ -55,15 +56,28 @@ class HomeComp extends Component {
   }
 
   handleRemoveAllPost() {
-    const { removeAllPost } = this.props;
-    removeAllPost();
+    const { removeAllPosts } = this.props;
+    this.setState({ removePost: 'All' });
+    setTimeout(() => {
+      removeAllPosts();
+      this.setState({ removePost: null });
+    }, 1000);
+  }
+
+  handleRemoveThisPost(e, id) {
+    const { removeThisPost } = this.props;
+    this.setState({ removePost: id });
+    setTimeout(() => {
+      removeThisPost(id);
+      this.setState({ removePost: null });
+    }, 1000);
   }
 
   render() {
     const { topList, pagination } = this.props;
     const { data = { children: null } } = topList;
     const { children } = data;
-    const { isOpen } = this.state;
+    const { isOpen, removePost } = this.state;
 
     return(
         <Fragment>
@@ -105,13 +119,14 @@ class HomeComp extends Component {
                         const thumbnail = url.match(/\.(jpg|png|gif)\b/) ? url : defaultThumb;
 
                         return(
-                          <Card key={index}>
-                            <div className="left-side-bar"></div>
+                          <Card key={index} className={index === removePost || removePost === 'All' ? 'hide' : 'show'}>
+                            <div className="left-side-bar">
+                              <div className="dismiss-post" onClick={e => this.handleRemoveThisPost(e, index)}>&#10006;</div>
+                            </div>
                             <div className="card-content">
                               <Card.Header>
                                 <div className="post-details">
                                   <div className="author-date">{`Posted by ${author} ${hoursAgo} hours ago`}</div>
-                                  <div className="dismiss-post">&#10006;</div>
                                 </div>
                                 <h4>{title}</h4>
                               </Card.Header>
