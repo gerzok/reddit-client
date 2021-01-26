@@ -1,5 +1,7 @@
-require('dotenv').config();
 import axios from 'axios';
+
+// ENV VARIABLES
+const urlEnv = process.env.APP_ENV === 'Development' ? process.env.DEVELOPMENT_URL : process.env.PRODUCTION_URL;
 
 // ACTIONS
 export const GET_TOKEN = 'GET_TOKEN';
@@ -14,20 +16,20 @@ export const ITEM_READ = 'ITEM_READ';
 // ACTIONS CREATORS
 export const getToken = () => {
   return dispatch =>
-      axios.post(`${process.env.PRODUCTION_URL}/getToken`)
+      axios.post(`${urlEnv}/getToken`)
         .then(res => dispatch({ type: GET_TOKEN, payload: res.data }));
 }
 
 export const getTopList = token => {
   return dispatch =>
-    axios.post(`${process.env.PRODUCTION_URL}/getTopList`, { token }, 
+    axios.post(`${urlEnv}/getTopList`, { token }, 
     { headers: { 'Content-Type': 'application/json' } })
       .then(res => dispatch({ type: GET_TOPLIST, payload: res.data }));
 }
 
 export const getPagination = (token, pagination) => {
   return dispatch =>
-    axios.post(`${process.env.PRODUCTION_URL}/getPagination`, { token, pagination }, 
+    axios.post(`${urlEnv}`, { token, pagination }, 
     { headers: { 'Content-Type': 'application/json' } })
       .then(res => dispatch({ type: GET_MORE_TOPLIST, payload: res.data }));
 }

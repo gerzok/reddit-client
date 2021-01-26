@@ -1,5 +1,6 @@
 const path = require('path');
 const webpack = require('webpack');
+const Dotenv = require('dotenv-webpack');
 
 module.exports = {
   mode: 'development',
@@ -22,17 +23,14 @@ module.exports = {
     ],
   },
   resolve: {
-    extensions: ['*', '.js', '.jsx'],
-    fallback: {
-      "fs": false,
-      "path": require.resolve("path-browserify")
-    }
+    extensions: ['*', '.js', '.jsx']
   },
   output: {
     path: path.join(__dirname, 'public'),
     filename: 'app.bundle.js'
   },
   plugins: [
+    new Dotenv(),
     new webpack.HotModuleReplacementPlugin()
   ],
   devServer: {

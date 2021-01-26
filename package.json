@@ -10,7 +10,7 @@
     "prodServe": "node ./backend/server.js",
     "build": "./node_modules/.bin/webpack --mode development",
     "prodBuild": "./node_modules/.bin/webpack --mode production",
-    "production": "npm-run-all build -p prodBuild prodServe",
+    "production": "npm run prodBuild",
     "openBrowser": "sleep 1 && ./node_modules/.bin/open-cli http://localhost:9000",
     "start": "npm-run-all build -p serve openBrowser"
   },
@@ -48,6 +48,7 @@
     "babel-loader": "^8.2.2",
     "babel-plugin-transform-class-properties": "^6.24.1",
     "css-loader": "^5.0.1",
+    "dotenv-webpack": "^6.0.0",
     "file-loader": "^6.2.0",
     "node-sass": "^5.0.0",
     "nodemon": "^2.0.7",
