@@ -2,20 +2,15 @@ const path = require('path');
 const webpack = require('webpack');
 const Dotenv = require('dotenv-webpack');
 
-const mode = process.env.APP_ENV || '';
-
 module.exports = {
-  mode,
+  mode: process.env.APP_ENV || 'development',
   entry: path.join(__dirname, 'src', 'index.js'),
   module: {
     rules: [
       {
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
-        use: ['babel-loader'],
-        options: {
-          presets: ['@babel/preset-env', '@babel/preset-react']
-        }
+        use: ['babel-loader']
       },
       {
         test: /\.(scss|css)$/,
