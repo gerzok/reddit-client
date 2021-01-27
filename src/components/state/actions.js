@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 // ENV VARIABLES
-const urlEnv = process.env.APP_ENV === 'Development' ? process.env.DEVELOPMENT_URL : process.env.PRODUCTION_URL;
+const urlEnv = process.env.APP_ENV === 'development' ? process.env.DEVELOPMENT_URL : process.env.PRODUCTION_URL;
 
 // ACTIONS
 export const GET_TOKEN = 'GET_TOKEN';
